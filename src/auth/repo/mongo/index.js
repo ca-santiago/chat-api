@@ -24,13 +24,26 @@ async function findByEmail(email) {
 
 async function find(id) {
   const exists = await AccountModel.findById(id).exec();
-  if (exists) return this.mapper.mapToDomain(exists);
+  if (exists) return accountMapper.mapToDomain(exists);
   return null;
 }
 
 async function _delete(id) {
   await AccountModel.findByIdAndDelete(id).exec();
   return;
+}
+
+async function findPaginated(offset = 0) {
+  const exists = await AccountModel.find({})
+    .limit(10)
+    .skip(offset)
+    .exec();
+  if (exists) {
+    return exists.map(item => {
+      return accountMapper.mapToDomain(item);
+    })
+  }
+  return null;
 }
 
 
@@ -40,6 +53,7 @@ module.exports = {
     findByEmail,
     delete: _delete,
     find,
-    exist
+    exist,
+    findPaginated
   }
 }

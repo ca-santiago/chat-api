@@ -3,6 +3,6 @@ const { AuthRouter } = require("../auth/infra/router");
 
 const RouterV1 = Router();
 
-RouterV1.use('/account', AuthRouter);
+RouterV1.use('/accounts', AuthRouter);
 
 module.exports = RouterV1;

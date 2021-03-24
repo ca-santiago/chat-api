@@ -1,8 +1,10 @@
+const { InitSocketService } = require("../message/infra");
 const { initMongoConnection } = require("../services/mongodb");
 
-async function StartServices() {
+async function StartServices(app, httpServer) {
   try {
     await LoadMogoService();
+    await InitSocketService(httpServer);
   } catch (err) {
     console.error(err);
     process.exit();

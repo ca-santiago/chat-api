@@ -11,7 +11,7 @@ async function VerifyCredentialsUseCase({ refreshToken, token }) {
   return right({
     token: res.token,
     refreshToken: res.refreshToken,
-    acccountId: res.accountId,
+    accountId: res.accountId,
   });
 }
 
