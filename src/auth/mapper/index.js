@@ -7,7 +7,7 @@ function mapToDomain(rawData) {
     id,
     password,
     name
-  }, rawData.id);
+  });
   return instance;
 }
 
